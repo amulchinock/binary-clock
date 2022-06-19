@@ -8,48 +8,39 @@ import indicator from './components/indicator.vue';
     <div class="row">
       <div class="col border-right">
         <div class="row">
-          <h2 class="col">Hours</h2>
+          <h2 class="col">Hours <small>{{this.hours.tens}} {{this.hours.units}}</small></h2>
         </div>
 
         <div class="row">
           <div class="col tens">
-            <indicator :state="true" />
-            <indicator :state="true" />
+            <indicator v-for="octet in octets.hours.t" :key="`hours_t_${octet.name}`" :state="octet.active" />
           </div>
 
           <div class="col units">
-            <indicator :state="true" />
-            <indicator :state="true" />
-            <indicator :state="true" />
-            <indicator :state="true" />
+            <indicator v-for="octet in octets.hours.u" :key="`hours_u_${octet.name}`" :state="octet.active" />
           </div>
         </div>
       </div>
 
       <div class="col border-right">
         <div class="row">
-          <h2 class="col">Minutes</h2>
+          <h2 class="col">Minutes <small>{{this.minutes.tens}} {{this.minutes.units}}</small></h2>
         </div>
 
         <div class="row">
           <div class="col tens">
-            <indicator :state="true" />
-            <indicator :state="true" />
-            <indicator :state="true" />
+            <indicator v-for="octet in octets.minutes.t" :key="`minutes_t_${octet.name}`" :state="octet.active" />
           </div>
 
           <div class="col units">
-            <indicator :state="true" />
-            <indicator :state="true" />
-            <indicator :state="true" />
-            <indicator :state="true" />
+            <indicator v-for="octet in octets.minutes.u" :key="`minutes_u_${octet.name}`" :state="octet.active" />
           </div>
         </div>
       </div>
 
       <div class="col">
         <div class="row">
-          <h2 class="col">Seconds {{this.seconds.units}}</h2>
+          <h2 class="col">Seconds <small>{{this.seconds.tens}} {{this.seconds.units}}</small></h2>
         </div>
 
         <div class="row">
@@ -131,6 +122,70 @@ export default {
             {
               name: 'octet_1',
               active: this.octetStatus(this.seconds.units, 1)
+            }
+          ]
+        },
+        minutes: {
+          t: [
+            {
+              name: 'octet_4',
+              active: this.octetStatus(this.minutes.tens, 4)
+            },
+            {
+              name: 'octet_2',
+              active: this.octetStatus(this.minutes.tens, 2)
+            },
+            {
+              name: 'octet_1',
+              active: this.octetStatus(this.minutes.tens, 1)
+            }
+          ],
+          u: [
+            {
+              name: 'octet_8',
+              active: this.octetStatus(this.minutes.units, 8)
+            },
+            {
+              name: 'octet_4',
+              active: this.octetStatus(this.minutes.units, 4)
+            },
+            {
+              name: 'octet_2',
+              active: this.octetStatus(this.minutes.units, 2)
+            },
+            {
+              name: 'octet_1',
+              active: this.octetStatus(this.minutes.units, 1)
+            }
+          ]
+        },
+        hours: {
+          t: [
+            {
+              name: 'octet_2',
+              active: this.octetStatus(this.hours.tens, 2)
+            },
+            {
+              name: 'octet_1',
+              active: this.octetStatus(this.hours.tens, 1)
+            }
+          ],
+          u: [
+            {
+              name: 'octet_8',
+              active: this.octetStatus(this.hours.units, 8)
+            },
+            {
+              name: 'octet_4',
+              active: this.octetStatus(this.hours.units, 4)
+            },
+            {
+              name: 'octet_2',
+              active: this.octetStatus(this.hours.units, 2)
+            },
+            {
+              name: 'octet_1',
+              active: this.octetStatus(this.hours.units, 1)
             }
           ]
         }
