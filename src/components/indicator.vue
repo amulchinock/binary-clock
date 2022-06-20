@@ -14,7 +14,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .indicator {
   width: 45px;
   height: 45px;
@@ -22,9 +22,33 @@ export default {
   border: 1px solid black;
   align-self: center;
   margin: 10px;
+  background-color: transparent;
+  transition: background-color 0.2s ease;
+  position: relative;
+
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: -1;
+    border-radius: 50%;
+    filter: blur(5px);
+    background-color: transparent;
+
+  }
 
   &.on {
-    background: green;
+    background-color: #33658A;
+
+    &:before {
+      content: '';
+      background-color: #86BBD8;
+      transition: 0.2s ease;
+    }
+
   }
 }
 </style>
