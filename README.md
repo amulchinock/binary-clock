@@ -14,11 +14,10 @@ concepts and see if there really are better ways of representing time, than we c
 ## Running it
 ```
 # Install dependencies
-yarn global add vite@latest
 yarn install
 
 # Run Vite's dev server
-vite
+yarn run dev
 ```
 
 ## Technical stuffs
