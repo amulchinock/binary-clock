@@ -220,6 +220,7 @@ export default {
   border-radius: 5px;
   padding: 15px 0;
   background: #F6AE2D;
+  color: #2F4858;
 
   h2 {
     text-align: center;
